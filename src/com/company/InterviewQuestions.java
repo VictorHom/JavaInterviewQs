@@ -654,6 +654,7 @@ public class InterviewQuestions {
         for (int i = 0; i < listWithDuplicates.size(); i++) {
             if (checker.indexOf(listWithDuplicates.get(i)) != -1) {
                 listWithDuplicates.remove(i);
+                i = i - 1; // had to set the index properly
             } else {
                 checker.add(listWithDuplicates.get(i));
             }
@@ -669,9 +670,43 @@ public class InterviewQuestions {
             for (int j = i + 1; j < listWithDuplicates.size(); j++) {
                 if (listWithDuplicates.get(i) == listWithDuplicates.get(j)) {
                     listWithDuplicates.remove(j);
+                    j = i;
                 }
             }
         }
         return listWithDuplicates;
     }
+
+
+    // find the kth to last element of a singly linked list
+    // assuming I can't just use list.size()
+    public static int removeKthToLastElement(LinkedList<Integer> list, int k) {
+        // 1->2->3->4->5->6->7->8->9->10
+        // k = 5, should return the value 6
+        // 1->2->3->4->5->6->7->8->9->10
+        // have a runnner that runs down until the end
+        // go 10 - 5 + 1
+        // start with an index of 0
+        int tracker = 0;
+        int lagger = 0;
+        // need to use the iterator twice, each iterator is its own iterator
+        ListIterator<Integer> listIterator = list.listIterator();
+        while(listIterator.hasNext()) {
+            listIterator.next();
+            tracker = tracker + 1;
+        }
+        int go = tracker - k + 1;
+        ListIterator<Integer> listIteratorB = list.listIterator();
+        while(listIteratorB.hasNext()) {
+            lagger = lagger + 1;
+            if (go == lagger) {
+                return listIteratorB.next();
+            }
+            listIteratorB.next();
+
+        }
+        return 0;
+    }
+
+
 }

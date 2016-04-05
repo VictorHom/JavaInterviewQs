@@ -133,5 +133,6 @@ public class Main {
         System.out.println(InterviewQuestions.removeDuplicates(new LinkedList<Integer>(Arrays.asList(6,6,1,2,3,1,4,2,3,4,6,6))));
         System.out.println(InterviewQuestions.removeDuplicatesWithNoDS(new LinkedList<Integer>(Arrays.asList(1,2,3,1,4))));
         System.out.println(InterviewQuestions.removeDuplicatesWithNoDS(new LinkedList<Integer>(Arrays.asList(6,6,1,2,3,1,4,2,3,4,6,6))));
+        System.out.println(InterviewQuestions.removeKthToLastElement(new LinkedList<>(Arrays.asList(1,2,3,1,4)), 2));
     }
 }
